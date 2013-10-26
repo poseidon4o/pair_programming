@@ -9,6 +9,10 @@ urlpatterns = patterns('',
     # url(r'^$', 'pp.views.home', name='home'),
     # url(r'^pp/', include('pp.foo.urls')),
 
+    url(r'^users$', 'WebSite.views.list_users'),
+    url(r'^login/$', 'WebSite.views.login_page'),
+    url(r'^register/$', 'WebSite.views.register_page'),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
