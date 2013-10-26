@@ -1,15 +1,6 @@
-<!DOCTYPE HTML">
-<html>
-<head>
-  <title>Login</title>
-  <link rel="stylesheet" href="../static/css/style.css" />
-</head>
-
-<body>
-  <div class="page_container">
-    <div class="logo_container">
-      <img src="../static/images/logo.png">
-    </div>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
     <div class="form_container">
       <div class="form_title">
         Login
@@ -31,6 +22,4 @@
       </form>
     </div>
   </div>
-
-</body>
-</html>
+{% endblock %}

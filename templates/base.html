@@ -1,0 +1,15 @@
+<!DOCTYPE HTML">
+<html>
+<head>
+  <title>{% block title %}title{% endblock %}</title>
+  <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+
+<body>
+  <div class="page_container">
+    <div class="logo_container">
+      <img src="../static/images/logo.png">
+    </div>
+    {% block content %}{% endblock %}
+</body>
+</html>
