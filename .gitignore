@@ -1,7 +1,0 @@
-.idea
-*.log
-*.pot
-*.pyc
-local_settings.py
-*idea/
-pp/settings.py
