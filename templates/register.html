@@ -6,62 +6,53 @@
 </head>
 
 <body>
-	<div class="logo">
-	<img src="images/logo.png">
-		<div class="form">
-			<h2>Register</h2>
-			<h5>errors put here</h5>
-			<form id="register" method="post">
-				<div class="register">
-					<div class="reg_text">Username*:</div>
-					<input type="text" size="20" name="username">
-				</div>
-				<div class="register">
-					<div class="reg_text">Password*:</div>
-					<input type="password" size="20" name="password">
-				</div>
-				<div class="register">
-					<div class="reg_text">Email:</div>
-					<input type="text" size="20" name="email">
-				</div>
-				<br>
-				<input type="submit" name="login" value="Login">
-				<input type="submit" name="register" value="Register">  
-	      </form>
-		</div>
-	</div>
+  <div class="page_container">
+    <div class="logo_container">
+      <img src="images/logo.png">
+    </div>
+    <div class="form_container">
+      <div class="form_title">
+        Register
+      </div>
+      <div class="error_container">
+        errors put here
+      </div>
+      <form id="login" action="" method="post">
+        <div class="control_container">
+        	<div class="form_col_text">
+        		Username*:
+        	</div>
+        	<div class="form_col_input">
+        		<input type="text" size="20" name="username">
+        	</div>
+        </div>
+        <div class="control_container"> 
+        	<div class="form_col_text">
+        		Password*:
+        	</div>
+        	<div class="form_col_input">
+				<input type="password" size="20" name="password">
+        	</div>
+        </div>
+        <div class="control_container"> 
+        	<div class="form_col_text">
+        		Eamil:
+        	</div>
+        	<div class="form_col_input">
+				<input type="text" size="20" name="email">
+        	</div>
+        </div>
+        <div class="small_text_container">
+        	fields with * are required
+        </div>
+        <div class="submit_container">
+          <input type="submit" name="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
 
-
-
-<form action="register.php" id="register" method="post">
-<table border="0">
-<tbody>
-
-<tr>
-<td><label for="name">Your Name*: </label> </td>
-<td><input id="name" maxlength="45" name="name" type="text" /> </td>
-</tr>
-
-<tr>
-<td><label for="email">Email Address*:</label> </td>
-<td><input id="email" maxlength="45" name="email" type="text" /></td>
-</tr>
-
-<tr>
-<td><label for="username">User Name*:</label> </td>
-<td><input id="username" maxlength="45" name="username" type="text" /> </td>
-</tr>
-
-<tr>
-<td><label for="password">Password*:</label></td>
-<td><input id="password" maxlength="45" name="password" type="password" /></td>
-</tr>
-
-<tr>
-<td align="right"><input name="Submit" type="submit" value="Submit" /></td>
-</tr>
-
-</tbody></table>
-</form>
+</body>
+</html>
 </body>
 </html>

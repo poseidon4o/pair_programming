@@ -1,4 +1,4 @@
-div.logo
+.page_container
 {
 	padding-top: 1px;
 	margin-left: 25%;
@@ -8,24 +8,43 @@ div.logo
 	border-color: lightgray;
 	text-align: center;
 }
-div.logo img
+.logo_container
 {
 	margin-top: 50px;
+	margin-bottom: 100px;
 }
-div.form
+.form_container
 {
-	margin-top: 100px;
-	display: block;
+	margin-left: 30%;
+	margin-right: 30%;
 }
-div.form h5
+.form_title
 {
+	font-size: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.error_container
+{
+	font-size: 15px;
 	color: red;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
-div.register input
+.control_container
 {
-	margin-left: 5%;
+	display: inline-block;
 }
-div.teg_text
+.form_col_text
+{
+	text-align: left;
+}
+.form_col_input
 {
 	text-align: right;
+}
+.small_text_container
+{
+	font-size: 13px;
+	color: gray;
 }
