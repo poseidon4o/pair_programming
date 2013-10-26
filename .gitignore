@@ -3,6 +3,5 @@
 *.pot
 *.pyc
 local_settings.py
-.*
-!/.gitignore
+*idea/
 pp/settings.py
