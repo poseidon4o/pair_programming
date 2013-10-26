@@ -1,0 +1,50 @@
+.page_container
+{
+	padding-top: 1px;
+	margin-left: 25%;
+	margin-right: 25%;
+	border: 2px solid;
+	border-top: 0px;
+	border-color: lightgray;
+	text-align: center;
+}
+.logo_container
+{
+	margin-top: 50px;
+	margin-bottom: 100px;
+}
+.form_container
+{
+	margin-left: 30%;
+	margin-right: 30%;
+}
+.form_title
+{
+	font-size: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.error_container
+{
+	font-size: 15px;
+	color: red;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.control_container
+{
+	display: inline-block;
+}
+.form_col_text
+{
+	text-align: left;
+}
+.form_col_input
+{
+	text-align: right;
+}
+.small_text_container
+{
+	font-size: 13px;
+	color: gray;
+}
