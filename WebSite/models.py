@@ -8,6 +8,17 @@ from django.contrib.auth.models import User
 #        Pair.l_u_id = self.id
 #        return Pair
 
+class LoginValidate():
+    @staticmethod
+    def validate(post):
+        if(len(post['username'] < 6)):
+            return None
+
+        if(post['password'] == post['passwordrepeat']):
+            return {'username': post['username'], 'password': post['password']}
+        else:
+            return None
+
 class Pair(models.Model):
     pairname = models.CharField(max_length=50)
     task = models.CharField(max_length=50)
