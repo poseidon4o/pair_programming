@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'pp.views.home', name='home'),
     # url(r'^pp/', include('pp.foo.urls')),
 
-    url(r'^users$', 'WebSite.views.list_users'),
+    url(r'^users/$', 'WebSite.views.list_users'),
     url(r'^login/$', 'WebSite.views.login_page'),
     url(r'^register/$', 'WebSite.views.register_page'),
 
