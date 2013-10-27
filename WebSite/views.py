@@ -10,6 +10,7 @@ def list_users(request):
 def login_page(request):
     if request.method == "POST":
         if "username" in request.POST and "password" in request.POST:
+            #TODO: some intersting shits :D
             return TemplateResponse(request, 'lobby.html')
     return TemplateResponse(request, 'index.html')
 
