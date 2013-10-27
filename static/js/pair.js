@@ -3,7 +3,7 @@ $(function() {
     var socket;
 
     var connected = function() {
-        console.log('Conected');
+        socket.subscribe('pair-code-' + window._pair_id);
     };
 
     var disconnected = function() {
@@ -12,13 +12,17 @@ $(function() {
 
 
     var messaged = function(data) {
-        console.log(data);
+        console.log(data['code']);
         $('#code_area').val(data['code']);
     };
 
     setInterval(function(){
         console.log('Sent:');
-        socket.send({code: $('#code_area').val() });
+        socket.send({
+            code: $('#code_area').val(),
+            user_id: window._user_id,
+            pair_id: window._pair_id
+        });
     },333);
 
     var start = function() {

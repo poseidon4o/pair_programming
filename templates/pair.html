@@ -6,8 +6,13 @@
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
         {% load socketio_tags %}
         {% socketio %}
+
+        <script>
+            window._pair_id = {{ pair.id }};
+            window._user_id = {{ user_id }};
+        </script>
         <script src="{{ STATIC_URL }}js/pair.js"></script>
-        <script>window.pair = {{ pair.id }};</script>
+
     {% endblock %}
 
     {% block main %}
@@ -16,7 +21,6 @@
 
 
     <form>
-        <input type="submit" id="submit" value="Join">
         <input type="button" id="leave" value="Leave">
         {% csrf_token %}
     </form>

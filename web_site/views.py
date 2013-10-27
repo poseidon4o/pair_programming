@@ -40,11 +40,12 @@ def lobby(request, template="lobby.html"):
 
 def pair(request, id, template="pair.html"):
     if request.session.get("username"):
-        context = {"pair": get_object_or_404(Pair, id=id)}
+        context = {"pair": get_object_or_404(Pair, id=id), 'user_id': 10}
         #TODO: give ID
         return render(request, template, context)
     else:
         return redirect(login)
+
 
 def create_pair(request):
     if request.session.get("username"):
