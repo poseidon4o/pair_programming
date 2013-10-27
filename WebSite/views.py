@@ -8,13 +8,10 @@ def list_users(request):
     return ""
 
 def login_page(request):
-
     if request.method == "POST":
         if "username" in request.POST and "password" in request.POST:
-            inta = 5
-    else:
-        tmp = Template('templates/index.html')
-        tmp.render()
+            return TemplateResponse(request, 'lobby.html')
+    return TemplateResponse(request, 'index.html')
 
 def register_page(request):
     if request.method == 'POST':
@@ -26,5 +23,3 @@ def register_page(request):
                 # TODO: add user to session
                 return TemplateResponse(request, 'lobby.html')
     return TemplateResponse(request, 'register.html')
-
-
