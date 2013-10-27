@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-
 {% block title %}{{ pair }}{% endblock %}
 
+{% block content %}
 {% block extra_js %}
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
@@ -28,5 +28,7 @@
     <input type="text" id="message" name="message">
     <input type="submit" id="submit" value="Join">
     <input type="button" id="leave" value="Leave">
+    {% csrf_token %}
 </form>
+{% endblock %}
 {% endblock %}
