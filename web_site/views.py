@@ -39,7 +39,7 @@ def lobby(request, template="lobby.html"):
         redirect(request, "login.html")
 
 def pair(request, id, template="pair.html"):
-    context = {"pair": get_object_or_404(Pair, id=id)}
+    context = {"pair": get_object_or_404(Pair, id=id), 'user_id': 10}
     #TODO: give ID
     return render(request, template, context)
 
