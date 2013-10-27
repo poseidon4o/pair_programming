@@ -8,7 +8,7 @@
       <div class="error_container">
         errors put here
       </div>
-      <form id="login" action="" method="post">
+      <form id="login" action="{% url "login" %}" method="POST">
         <div class="control_container"> 
           <input type="text" size="20" name="username" value="Username">
         </div>
@@ -19,6 +19,7 @@
           <div class="submit_container_login">
             <input type="submit" name="login" value="Login">
           </div>
+      {% csrf_token %}
       </form>
           <div class="submit_container_register">
             <form action="/register" method="get">

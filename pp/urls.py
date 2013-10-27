@@ -5,9 +5,9 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^login/', 'web_site.views.login'),
-    url(r'^register/', 'web_site.views.register'),
-    url(r'^$', 'web_site.views.login'),
+    url(r'^login/', 'web_site.views.login', name = 'login'),
+    url(r'^register/', 'web_site.views.register', name='create_user'),
+    url(r'^$', 'web_site.views.login', name = 'login'),
     url(r'^lobby/', 'web_site.views.lobby'),
     url(r'^create_pair/', 'web_site.views.create_pair', name='create_pair'),
     url(r'^pair/(\d+)/', 'web_site.views.pair')
