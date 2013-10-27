@@ -76,6 +76,10 @@
 }
 .control_container
 {
+	display: block;
+}
+.control_container_reg
+{
 	display: inline-block;
 }
 .form_col_text
@@ -84,6 +88,7 @@
 }
 .form_col_input
 {
+	display: inline;
 	text-align: right;
 }
 .small_text_container
