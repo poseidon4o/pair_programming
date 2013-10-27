@@ -1,3 +1,4 @@
+from gnome_sudoku.defaults import WEBSITE
 from django.conf.urls import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
@@ -11,6 +12,7 @@ urlpatterns = patterns('',
 
     url(r'^users/$', 'WebSite.views.list_users'),
     url(r'^login/$', 'WebSite.views.login_page'),
+    url(r'^$', 'WebSite.views.login_page'),
     url(r'^register/$', 'WebSite.views.register_page'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
