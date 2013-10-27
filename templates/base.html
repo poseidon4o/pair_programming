@@ -1,8 +1,8 @@
-<!DOCTYPE HTML">
+<!DOCTYPE HTML>
 <html>
 <head>
-  <title>{% block title %}title{% endblock %}</title>
-  <link rel="stylesheet" href="../static/css/style.css" />
+    <title>{% block title %}title{% endblock %}</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
 </head>
 
 <body>
@@ -11,13 +11,14 @@
     	{% block header %}
         {% endblock %}
         <div class="logo_container">
-            <img src="../static/images/logo.png">
+            <img src="{{ STATIC_URL }}images/logo.png">
         </div>
     </div>
 
     <div class="main_container">
-    {% block content %}{% endblock %}
+        {% block content %}{% endblock %}
     </div>
+    {% block main %}{% endblock %}
   </div>
 </body>
 </html>
