@@ -4,7 +4,9 @@
         {% block header %}
         <div class="logged_user">
             Logged in as: USERNAME
-            <input type="submit" id="logout" value="Log Out">
+            <form action="/logout" method="get">
+              <input type="submit" name="logout" value="Log Out">
+            </form>
         </div>
         {% endblock %}
         
@@ -19,8 +21,18 @@
 {% block main %}
 {% for pair in pairs %}
 <div class="pair_container">
-    <h1><a href="{{ pair.get_absolute_url }}">{{ pair }}</a></h1>
-     {{ pair.lang }}: {{ pair.task }}
+    <div class="pair_header">
+        Pair {{ pair.id }}: <a href="{{ pair.get_absolute_url }}">{{ pair }}</a>
+    </div>
+    <div class="pair_lang">
+        Language: {{ pair.lang }}
+    </div>
+    <div class="pair_task">
+        Tasks:
+        <div class="pair_task_text">
+            {{ pair.task }}
+        </div>
+    </div>
 </div>
 {% empty %}
 <div class="pair_errors">
