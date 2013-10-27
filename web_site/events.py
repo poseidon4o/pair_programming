@@ -17,11 +17,12 @@ def message(request, socket, context, message):
     Event handler for pair data channel
     """
     socket.send_and_broadcast_channel({'code': message['code']})
-    if 'pair_id' not in message or 'user_id' not in message:
-        return
-
-    pair = get_object_or_404(Pair, id=message['pair_id'])
-
-    if pair.l_u_id != int(message['user_id']) and pair.r_u_id != int(message['user_id']):
-        return
+    return
+    #if 'pair_id' not in message or 'user_id' not in message:
+    #    return
+    #
+    #pair = get_object_or_404(Pair, id=message['pair_id'])
+    #
+    #if pair.l_u_id != int(message['user_id']) and pair.r_u_id != int(message['user_id']):
+    #    return
 
