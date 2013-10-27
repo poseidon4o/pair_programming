@@ -12,12 +12,13 @@ $(function() {
 
 
     var messaged = function(data) {
-        $('#code_area').val(data);
+        console.log(data);
+        $('#code_area').val(data['code']);
     };
 
     setInterval(function(){
         console.log('Sent:');
-        socket.send({code: $('#code_area').val());
+        socket.send({code: $('#code_area').val() });
     },100);
 
     var start = function() {
