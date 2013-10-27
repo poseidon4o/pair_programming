@@ -1,8 +1,5 @@
 $(function() {
 
-    var name, started = false;
-
-
     var socket;
 
     var connected = function() {
@@ -15,12 +12,14 @@ $(function() {
 
 
     var messaged = function(data) {
-        $('#code_area').val(data);
+        console.log(data);
+        $('#code_area').val(data['code']);
     };
 
     setInterval(function(){
-        socket.send($('#code_area').val());
-    },100)
+        console.log('Sent:');
+        socket.send({code: $('#code_area').val() });
+    },100);
 
     var start = function() {
         socket = new io.Socket();
