@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load url from future %}
+
+{% block extra_js %}
+<script>$(showForm);</script>
+{% endblock %}
+
+{% block main %}
+{% for pair in pairs %}
+<div class="pair">
+    <h1><a href="{{ pair.get_absolute_url }}">{{ pair }}</a></h1>
+    {{ pair.task }}
+</div>
+{% empty %}
+<p>No pairs available, go ahead and create one :)</p>
+{% endfor %}
+<br clear="all">
+{% endblock %}
+
+{% block form %}
+<form method="post" action="{% url "create_pair" %}">
+    <div>
+        <span class="label">Pair name</span>
+        <input type="text" id="name" name="name">
+    </div>
+    <div>
+        <span class="label">Pair language</span>
+        <input type="text" id="lang" name="lang">
+    </div>
+    <div>
+        <span class="label">Pair task</span>
+        <textarea name="task" id="task" ></textarea>
+    </div>
+
+    <input type="submit" id="submit" value="Create pair">
+    {% csrf_token %}
+</form>
+{% endblock %}
