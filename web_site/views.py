@@ -18,6 +18,7 @@ def login(request, template="login.html"):
 def logout(request):
     try:
         del request.session["username"]
+        
     except KeyError:
         pass
     return redirect(request, "login.html")
