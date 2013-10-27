@@ -7,6 +7,7 @@ from web_site.models import Pair
 
 @events.on_connect
 def connect(request, socket, context):
+
     print "connect"
 
 
