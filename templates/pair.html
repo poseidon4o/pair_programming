@@ -1,15 +1,24 @@
 {% extends "base.html" %}
-
 {% block title %}{{ pair }}{% endblock %}
 
-{% block extra_js %}
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    {% load socketio_tags %}
-    {% socketio %}
-    <script src="{{ STATIC_URL }}js/pair.js"></script>
-    <script>window.pair = {{ pair.id }};</script>
-{% endblock %}
+{% block content %}
+    {% block extra_js %}
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        {% load socketio_tags %}
+        {% socketio %}
+        <script src="{{ STATIC_URL }}js/pair.js"></script>
+        <script>window.pair = {{ pair.id }};</script>
+    {% endblock %}
 
-{% block main %}
-    <textarea id="code_area"></textarea>
+    {% block main %}
+        <textarea id="code_area"></textarea>
+    {% endblock %}
+
+
+    <form>
+        <input type="submit" id="submit" value="Join">
+        <input type="button" id="leave" value="Leave">
+        {% csrf_token %}
+    </form>
+
 {% endblock %}
