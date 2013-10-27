@@ -1,5 +1,16 @@
 $(function() {
 
+    var isMyTurn = window._pair_owner_id == window._user_id ;
+    var other_id = -1;
+    var myCode = '';
+
+
+    $('#leave').click(function(){
+        location = '/';
+    });
+
+
+
     var socket;
 
     var connected = function() {
@@ -12,17 +23,29 @@ $(function() {
 
 
     var messaged = function(data) {
-        console.log(data['code']);
-        $('#code_area').val(data['code']);
+        if( data['active_user'] == window._user_id ) {
+            isMyTurn = true;
+        }
+        if( parseInt(data['user_id']) != parseInt(window._user_id) ) {
+            other_id = data['user_id'];
+            $('#code_area').val(data['code']);
+            console.log('upd: '+ data['code']);
+        }
+
     };
 
     setInterval(function(){
-        console.log('Sent:');
-        socket.send({
-            code: $('#code_area').val(),
-            user_id: window._user_id,
-            pair_id: window._pair_id
-        });
+        var code = $('#code_area').val();
+        if (code != myCode ) {
+            myCode = code;
+
+            socket.send({
+                code: code,
+                user_id: window._user_id,
+                pair_id: window._pair_id
+            });
+        }
+
     },333);
 
     var start = function() {

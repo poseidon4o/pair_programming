@@ -16,8 +16,7 @@ def message(request, socket, context, message):
     """
     Event handler for pair data channel
     """
-    print 'sent'
-    socket.send_and_broadcast_channel({'code': message['code']})
+    socket.broadcast_channel(message=message)
     return
     #if 'pair_id' not in message or 'user_id' not in message:
     #    return
