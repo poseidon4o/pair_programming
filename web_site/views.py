@@ -2,25 +2,26 @@ from django.shortcuts import get_object_or_404, render, redirect
 from web_site.models import Pair
 from pprint import pprint
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
 
 def login(request, template="login.html"):
-    print request.method
     if request.method == "POST":
-            #if User.check_password(request.POST.get("username"), request.POST.get("password")):
-        print "loged", request.POST.get("username"), request.POST.get("password")
-        return redirect(lobby)
+        user = authenticate(username=request.POST.get("username"), password=request.POST.get("password"))
+        if user is not None:
+            return redirect(lobby)
+    else:
+        return render(request, template)
     return render(request, template)
 
 def register(request, template="register.html"):
     if request.method == "POST":
-        if 'username' in request.POST and 'password' in request.POST and 'password_again' in request.POST:
-            if request.POST.get("password") == request.POST.get("password_again"):
-                User.objects.create(request.POST.get("username"), request.POST.get("password"), request.POST.get("email"))
-                return redirect(lobby)
+        if request.POST.get("password") == request.POST.get("password_again"):
+            User.objects.create_user(request.POST.get("username"), request.POST.get("email"), request.POST.get("password"))
+            return redirect(lobby)
     else:
         return render(request, template)
-    return redirect(register)
+    return render(register)
 
 def lobby(request, template="lobby.html"):
     context = {"pairs": Pair.objects.all()}
