@@ -10,7 +10,7 @@
 {% for pair in pairs %}
 <div class="pair">
     <h1><a href="{{ pair.get_absolute_url }}">{{ pair }}</a></h1>
-    {{ pair.task }}
+     {{ pair.lang }}: {{ pair.task }}
 </div>
 {% empty %}
 <p>No pairs available, go ahead and create one :)</p>
