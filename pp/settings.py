@@ -65,6 +65,7 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
     '/home/poseidon4o/python/pp/static/',
+    #'/home/endisnear/pp/static/',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -79,7 +80,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'k^6d*^g5h5z+2imd35^(i7&vwr2jym*k=6pge-1z737ucvl+56'
+SECRET_KEY = ' '
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (

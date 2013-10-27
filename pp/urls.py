@@ -6,7 +6,9 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url("", include('django_socketio.urls')),
-    url(r'^$', 'web_site.views.lobby'),
+    url(r'^login/', 'web_site.views.login', name = 'login'),
+    url(r'^register/', 'web_site.views.register', name='create_user'),
+    url(r'^$', 'web_site.views.login', name = 'login'),
     url(r'^lobby/', 'web_site.views.lobby'),
     url(r'^create_pair/', 'web_site.views.create_pair', name='create_pair'),
     url(r'^pair/(\d+)/', 'web_site.views.pair')

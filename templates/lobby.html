@@ -1,4 +1,14 @@
 {% extends "base.html" %}
+{% block title %}Lobby{% endblock %}
+
+        {% block header %}
+        <div class="logged_user">
+            Logged in as: USERNAME
+            <input type="submit" id="logout" value="Log Out">
+        </div>
+        {% endblock %}
+        
+{% block content %}
 
 {% load url from future %}
 
@@ -8,14 +18,15 @@
 
 {% block main %}
 {% for pair in pairs %}
-<div class="pair">
+<div class="pair_container">
     <h1><a href="{{ pair.get_absolute_url }}">{{ pair }}</a></h1>
      {{ pair.lang }}: {{ pair.task }}
 </div>
 {% empty %}
-<p>No pairs available, go ahead and create one :)</p>
+<div class="pair_errors">
+    No pairs available, go ahead and create one :3
+</div>
 {% endfor %}
-<br clear="all">
 {% endblock %}
 
 {% block form %}
@@ -36,4 +47,5 @@
     <input type="submit" id="submit" value="Create pair">
     {% csrf_token %}
 </form>
+{% endblock %}
 {% endblock %}
