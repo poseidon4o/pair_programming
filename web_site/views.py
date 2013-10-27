@@ -4,19 +4,23 @@ from pprint import pprint
 from django.contrib.auth.models import User
 
 
-def login (request, template="login.html")
+def login(request, template="login.html"):
     if request.method == "POST":
         if "username" in request.POST and "password" in request.POST:
             if User.check_password(request.POST.get("username"), request.POST.get("password")):
                 return redirect(lobby)
+    else:
+        return render(request, template)
     return redirect(login)
 
-def register (request, template="register.html")
+def register(request, template="register.html"):
     if request.method == "POST":
         if 'username' in request.POST and 'password' in request.POST and 'password_again' in request.POST:
             if request.POST.get("password") == request.POST.get("password_again"):
                 user = User.objects.create_user(request.POST.get("username"), request.POST.get("password"), request.POST.get("email"))
                 return redirect(lobby)
+    else:
+        return render(request, template)
     return redirect(register)
 
 def lobby(request, template="lobby.html"):

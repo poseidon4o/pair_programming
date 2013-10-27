@@ -1,22 +1,23 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML">
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <title>{% block title %}Pair Programmig{% endblock %}</title>
-    {% block extra_css %}{% endblock %}
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script>
-        var showForm = function() {
-            $('form').slideDown(function() {
-                $('form input[type="text"]').focus();
-            });
-        };
-    </script>
-    {% block extra_js %}{% endblock %}
-
+  <title>{% block title %}title{% endblock %}</title>
+  <link rel="stylesheet" href="../static/css/style.css" />
 </head>
+
 <body>
-    <div id="main">{% block main %}{% endblock %}</div>
-    {% block form %}{% endblock %}
+  <div class="page_container">
+    <div class="header_container">
+    	{% block header %}
+        {% endblock %}
+        <div class="logo_container">
+            <img src="../static/images/logo.png">
+        </div>
+    </div>
+
+    <div class="main_container">
+    {% block content %}{% endblock %}
+    </div>
+  </div>
 </body>
+</html>
