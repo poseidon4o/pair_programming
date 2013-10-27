@@ -19,7 +19,7 @@ $(function() {
     setInterval(function(){
         console.log('Sent:');
         socket.send({code: $('#code_area').val() });
-    },100);
+    },333);
 
     var start = function() {
         socket = new io.Socket();
