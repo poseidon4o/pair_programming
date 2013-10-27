@@ -21,17 +21,19 @@
 {% block main %}
 {% for pair in pairs %}
 <div class="pair_container">
-    <div class="pair_header">
-        Pair {{ pair.id }}: <a href="{{ pair.get_absolute_url }}">{{ pair }}</a>
-    </div>
-    <div class="pair_lang">
-        Language: {{ pair.lang }}
-    </div>
-    <div class="pair_task">
-        Tasks:
-        <div class="pair_task_text">
-            {{ pair.task }}
+    <div class="pair_wrapper">
+        <div class="pair_header">
+            Pair {{ pair.id }}: <a href="{{ pair.get_absolute_url }}">{{ pair }}</a>
         </div>
+        <div class="pair_lang">
+            Language: {{ pair.lang }}
+        </div>
+        <!-- <div class="pair_task">
+            Tasks:
+            <div class="pair_task_text">
+                {{ pair.task }}
+            </div>
+        </div> -->
     </div>
 </div>
 {% empty %}
@@ -42,22 +44,35 @@
 {% endblock %}
 
 {% block form %}
-<form method="post" action="{% url "create_pair" %}">
-    <div>
-        <span class="label">Pair name</span>
-        <input type="text" id="name" name="name">
+<div class="form_container">
+    <form method="post" action="{% url "create_pair" %}">
+        <div class="control_container">
+            <div class="form_col_text">
+                Pair name:
+            </div>
+            <div class="form_col_input">
+                <input type="text" id="name" name="name">
+            </div>
+        </div>
+        <div class="control_container">
+            <div class="form_col_text">
+                Pair language:
+            </div>
+            <div class="form_col_input">
+                <input type="text" id="lang" name="lang">
+            </div>
+        </div>
+        <div class="control_container">
+            <div class="form_col_text">
+                Pair task:
+            </div>
+            <textarea name="task" id="task" ></textarea>
+        </div>
+        <div class="submit_container">
+            <input type="submit" id="submit" value="Create pair">
+        </div>
+        {% csrf_token %}
+    </form>
     </div>
-    <div>
-        <span class="label">Pair language</span>
-        <input type="text" id="lang" name="lang">
-    </div>
-    <div>
-        <span class="label">Pair task</span>
-        <textarea name="task" id="task" ></textarea>
-    </div>
-
-    <input type="submit" id="submit" value="Create pair">
-    {% csrf_token %}
-</form>
 {% endblock %}
 {% endblock %}
