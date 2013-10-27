@@ -23,9 +23,6 @@ $(function() {
 
 
     var messaged = function(data) {
-        if( data['active_user'] == window._user_id ) {
-            isMyTurn = true;
-        }
         if( parseInt(data['user_id']) != parseInt(window._user_id) ) {
             other_id = data['user_id'];
             $('#code_area').val(data['code']);
