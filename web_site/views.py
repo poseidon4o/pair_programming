@@ -9,11 +9,19 @@ def login(request, template="login.html"):
     if request.method == "POST":
         user = authenticate(username=request.POST.get("username"), password=request.POST.get("password"))
         if user is not None:
+            request.session["username"] = user.id
             return redirect(lobby)
     else:
         return render(request, template)
     return render(request, template)
 
+def logout(request):
+    try:
+        del request.session["username"]
+        
+    except KeyError:
+        pass
+    return redirect(request, "login.html")
 def register(request, template="register.html"):
     if request.method == "POST":
         if request.POST.get("password") == request.POST.get("password_again"):
@@ -24,12 +32,15 @@ def register(request, template="register.html"):
     return render(register)
 
 def lobby(request, template="lobby.html"):
-    context = {"pairs": Pair.objects.all()}
-    return render(request, template, context)
-
+    if request.session.get("username"):
+        context = {"pairs": Pair.objects.all()}
+        return render(request, template, context)
+    else:
+        redirect(request, "login.html")
 
 def pair(request, id, template="pair.html"):
     context = {"pair": get_object_or_404(Pair, id=id)}
+    #TODO: give ID
     return render(request, template, context)
 
 
