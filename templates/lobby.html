@@ -47,26 +47,32 @@
 <div class="form_container">
     <form method="post" action="{% url "create_pair" %}">
         <div class="control_container">
+          <div class="control_container_reg">
             <div class="form_col_text">
                 Pair name:
             </div>
             <div class="form_col_input">
                 <input type="text" id="name" name="name">
             </div>
+          </div>
         </div>
         <div class="control_container">
+          <div class="control_container_reg">
             <div class="form_col_text">
                 Pair language:
             </div>
             <div class="form_col_input">
                 <input type="text" id="lang" name="lang">
             </div>
+          </div>
         </div>
         <div class="control_container">
+          <div class="control_container_reg">
             <div class="form_col_text">
                 Pair task:
             </div>
             <textarea name="task" id="task" ></textarea>
+          </div>
         </div>
         <div class="submit_container">
             <input type="submit" id="submit" value="Create pair">
