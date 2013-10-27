@@ -16,11 +16,6 @@ def login_page(request):
         tmp = Template('templates/index.html')
         tmp.render()
 
-
-def login_page(request):
-    return ""
-
-
 def register_page(request):
     if request.method == 'POST':
         if 'username' in request.POST and 'password' in request.POST and 'password_again' in request.POST:
