@@ -15,6 +15,8 @@ def message(request, socket, context, message):
     """
     Event handler for pair data channel
     """
+    print('-------------------')
+
     if 'pair_id' not in message or 'user_id' not in message:
         return
 

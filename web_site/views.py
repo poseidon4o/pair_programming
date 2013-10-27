@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from web_site.models import Pair
+from pprint import pprint
 
 
-def list_pairs(request, template="pairs.html"):
-    context = {"rooms": Pair.objects.all()}
+def lobby(request, template="lobby.html"):
+    context = {"pairs": Pair.objects.all()}
     return render(request, template, context)
 
 
@@ -18,9 +19,12 @@ def create_pair(request):
     task = request.POST.get('task')
     uid = request.session.get('user_id')
 
-    if name and lang and task and uid:
-        pair_obj, created = Pair.objects.create(name=name, lang=lang, task=task, left_user_id=uid)
-        return redirect(pair_obj)
+    if name and lang and task:  # and uid
+        pair, created = Pair.objects.create(name=name, lang=lang, task=task, l_u_id=uid), True
+        print("pair created, redirect to pair page")
+        return redirect(pair)
 
-    return redirect(list_pairs)
+    pprint(request.session)
+    print(vars(request.session))
+    return redirect(lobby)
 
