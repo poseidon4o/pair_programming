@@ -5,6 +5,8 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'login/', 'web_site.views.login'),
+    url('register/', 'web_site.views.register'),
     url(r'^$', 'web_site.views.lobby'),
     url(r'^lobby/', 'web_site.views.lobby'),
     url(r'^create_pair/', 'web_site.views.create_pair', name='create_pair'),
