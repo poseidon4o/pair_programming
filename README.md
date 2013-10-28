@@ -5,7 +5,7 @@ pp
 Setup
 =====
 
-./manage.py syncdb
+$./manage.py syncdb
 
 
 Run
