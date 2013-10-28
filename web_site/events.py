@@ -7,15 +7,22 @@ from web_site.models import Pair
 
 @events.on_connect
 def connect(request, socket, context):
+    print request
 
-    print "connect"
 
+
+@events.on_subscribe
+def subscribe(request, socket, context, channel):
+    return
 
 @events.on_message(channel="^pair-code-")
 def message(request, socket, context, message):
     """
     Event handler for pair data channel
     """
+    print(request)
+
+
     socket.broadcast_channel(message=message)
     return
     #if 'pair_id' not in message or 'user_id' not in message:
