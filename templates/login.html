@@ -8,7 +8,7 @@
       <div class="error_container">
         
       </div>
-      <form id="login" action="{% url "login" %}" method="POST">
+      <form id="login" action="{% url "user_login" %}" method="POST">
         <div class="control_container"> 
           <input type="text" size="20" name="username" value="Username">
         </div>
@@ -22,7 +22,7 @@
       {% csrf_token %}
       </form>
           <div class="submit_container_register">
-            <form action="/register" method="get">
+            <form action="{% url 'user_register' %}" method="get">
               <input type="submit" name="register" value="Register">
             </form>
           </div>

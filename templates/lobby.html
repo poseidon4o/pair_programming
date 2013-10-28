@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Lobby{% endblock %}
 
-        {% block header %}
-        <div class="logged_user">
-            <form action="/logout" method="get">
-              <input type="submit" name="logout" value="Log Out">
-            </form>
-        </div>
-        {% endblock %}
+    {% block header %}
+    <div class="logged_user">
+        <form action="{% url 'user_logout' %}" method="get">
+            <input type="submit" name="logout" value="Log Out">
+        </form>
+    </div>
+    {% endblock %}
         
 {% block content %}
 
