@@ -6,10 +6,10 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url("", include('django_socketio.urls')),
-    url(r'^login/', 'web_site.views.login', name = 'login'),
-    url(r'^logout/', 'web_site.views.logout'),
-    url(r'^register/', 'web_site.views.register', name='create_user'),
-    url(r'^$', 'web_site.views.login', name = 'login'),
+    url(r'^accounts/login/', 'web_site.views.login', name='user_login'),
+    url(r'^accounts/logout/', 'web_site.views.logout', name='user_logout'),
+    url(r'^accounts/register/', 'web_site.views.register', name='user_register'),
+    url(r'^$', 'web_site.views.login'),
     url(r'^lobby/', 'web_site.views.lobby'),
     url(r'^create_pair/', 'web_site.views.create_pair', name='create_pair'),
     url(r'^pair/(\d+)/', 'web_site.views.pair')
