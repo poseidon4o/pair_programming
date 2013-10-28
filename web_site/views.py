@@ -1,6 +1,5 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from web_site.models import Pair
-from pprint import pprint
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
@@ -52,18 +51,21 @@ def lobby(request, template="lobby.html"):
 
 
 @login_required
-def pair(request, id, template="pair.html"):
+def pair(request, pair_id, template="pair.html"):
     user_id = request.session.get("user_id")
-    if user_id is not None:
-        p_obj = get_object_or_404(Pair, id=id)
-        p_obj.l_u_id = user_id
-        context = {
-            "pair": p_obj,
-            'user_id': user_id,
-            'pair_owner': p_obj.l_u_id
-        }
-        return render(request, template, context)
-    redirect(login)
+    pair_obj = Pair.objects.get(id=pair_id)
+    if pair_obj is None:
+        return redirect(lobby)
+
+    if pair_obj.is_user_in(user_id):
+        return render(request, template, pair_obj.get_context())
+
+    if not pair_obj.has_free_spot():
+        return redirect(lobby)
+
+    pair_obj.push_user(request.user)
+
+    return render(request, template, pair_obj.get_context())
 
 
 @login_required
@@ -71,12 +73,15 @@ def create_pair(request):
     name = request.POST.get("name")
     lang = request.POST.get('lang')
     task = request.POST.get('task')
-    uid = request.session.get('user_id')
 
     if name and lang and task:
-        pair, created = Pair.objects.create(name=name, lang=lang, task=task, l_u_id=uid), True
+        pair, created = Pair.objects.create(
+            name=name,
+            lang=lang,
+            task=task,
+            owner=request.user,
+            turn=request.user
+        ), True
         return redirect(pair)
-
-    pprint(request.session)
 
     return redirect(lobby)
