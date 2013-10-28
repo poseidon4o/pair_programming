@@ -1,0 +1,98 @@
+.page_container
+{
+	padding-top: 1px;
+	margin-left: 10%;
+	margin-right: 10%;
+	border: 2px solid;
+	border-top: 0px;
+	border-color: lightgray;
+}
+.header_container
+{
+	margin-bottom: 100px;
+}
+.logged_user
+{
+	text-align: top;
+	float: right;
+}
+.logo_container
+{
+	margin-top: 10px;
+	float: left;
+}
+.main_container
+{
+	text-align: center;
+}
+.pair_container
+{
+	clear: left;
+	border: 2px solid;
+	border-color: lightgray;
+	border-left: 0px;
+	border-right: 0px;
+}
+.pair_wrapper
+{
+	margin-left: 33%;
+	margin-right: 33%;
+	border-left: 0px solid;
+	border-right: 0px solid;
+	border-color: lightgray;
+}
+.pair_task
+{
+	padding: 5px;
+	text-align: left;
+	border-top: 1px solid;
+	border-color: lightgray;
+}
+.pair_task_text
+{
+	display: inline;
+}
+.pair_errors
+{
+	clear: left;
+}
+.form_container
+{
+	margin-left: 30%;
+	margin-right: 30%;
+}
+.form_title
+{
+	font-size: 25px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.error_container
+{
+	font-size: 15px;
+	color: red;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.control_container
+{
+	display: block;
+}
+.control_container_reg
+{
+	display: inline-block;
+}
+.form_col_text
+{
+	text-align: left;
+}
+.form_col_input
+{
+	display: inline;
+	text-align: right;
+}
+.small_text_container
+{
+	font-size: 13px;
+	color: gray;
+}

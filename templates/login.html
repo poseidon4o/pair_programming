@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <div class="form_container">
+      <div class="form_title">
+        Login
+      </div>
+      <div class="error_container">
+        
+      </div>
+      <form id="login" action="{% url "user_login" %}" method="POST">
+        <div class="control_container"> 
+          <input type="text" size="20" name="username" value="Username">
+        </div>
+        <div class="control_container"> 
+          <input type="password" size="20" name="password" value="Password">
+        </div>
+        <div class="submit_container">
+          <div class="submit_container_login">
+            <input type="submit" name="login" value="Login">
+          </div>
+      {% csrf_token %}
+      </form>
+          <div class="submit_container_register">
+            <form action="{% url 'user_register' %}" method="get">
+              <input type="submit" name="register" value="Register">
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}

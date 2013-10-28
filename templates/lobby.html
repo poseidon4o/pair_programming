@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}Lobby{% endblock %}
+
+    {% block header %}
+    <div class="logged_user">
+        <form action="{% url 'user_logout' %}" method="get">
+            <input type="submit" name="logout" value="Log Out">
+        </form>
+    </div>
+    {% endblock %}
+        
+{% block content %}
+
+{% load url from future %}
+
+{% block main %}
+{% for pair in pairs %}
+<div class="pair_container">
+    <div class="pair_wrapper">
+        <div class="pair_header">
+            Pair {{ pair.id }}: <a href="{{ pair.get_absolute_url }}">{{ pair }}</a>
+        </div>
+        <div class="pair_lang">
+            Language: {{ pair.lang }}
+        </div>
+        <!-- <div class="pair_task">
+            Tasks:
+            <div class="pair_task_text">
+                {{ pair.task }}
+            </div>
+        </div> -->
+    </div>
+</div>
+{% empty %}
+<div class="pair_errors">
+    No pairs available, go ahead and create one :) <!-- TOUCH AGIAN AND YOU ARE DISQUALIFIED -->
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block form %}
+<div class="form_container">
+    <form method="post" action="{% url "create_pair" %}">
+        <div class="control_container">
+          <div class="control_container_reg">
+            <div class="form_col_text">
+                Pair name:
+            </div>
+            <div class="form_col_input">
+                <input type="text" id="name" name="name">
+            </div>
+          </div>
+        </div>
+        <div class="control_container">
+          <div class="control_container_reg">
+            <div class="form_col_text">
+                Pair language:
+            </div>
+            <div class="form_col_input">
+                <input type="text" id="lang" name="lang">
+            </div>
+          </div>
+        </div>
+        <div class="control_container">
+          <div class="control_container_reg">
+            <div class="form_col_text">
+                Pair task:
+            </div>
+            <textarea name="task" id="task" ></textarea>
+          </div>
+        </div>
+        <div class="submit_container">
+            <input type="submit" id="submit" value="Create pair">
+        </div>
+        {% csrf_token %}
+    </form>
+    </div>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="form_container">
+      <div class="form_title">
+        Register
+      </div>
+      <div class="error_container">
+        
+      </div>
+      <form id="login" action="{% url "user_register" %}" method="post">
+        <div class="control_container"> 
+          <div class="control_container_reg">
+          	<div class="form_col_text">
+          		Username*:
+          	</div>
+          	<div class="form_col_input">
+          		<input type="text" size="20" name="username">
+          	</div>
+          </div>
+        </div>
+        <div class="control_container"> 
+          <div class="control_container_reg"> 
+            <div class="form_col_text">
+              Password*:
+            </div>
+            <div class="form_col_input">
+          <input type="password" size="20" name="password">
+            </div>
+          </div>
+        </div>
+        <div class="control_container"> 
+          <div class="control_container_reg"> 
+            <div class="form_col_text">
+              Repeat Password*:
+            </div>
+            <div class="form_col_input">
+          <input type="password" size="20" name="password_again">
+            </div>
+          </div>
+        </div>
+        <div class="control_container"> 
+          <div class="control_container_reg"> 
+          	<div class="form_col_text">
+          		Email:
+          	</div>
+          	<div class="form_col_input">
+  				<input type="text" size="20" name="email">
+          	</div>
+          </div>
+        </div>
+        <div class="small_text_container">
+        	fields with * are required
+        </div>
+        <div class="submit_container">
+          <input type="submit" name="submit" value="Submit">
+        </div>
+      {% csrf_token %}
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ pair }}{% endblock %}
+
+{% block content %}
+    {% block extra_js %}
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        {% load socketio_tags %}
+        {% socketio %}
+
+        <script>
+            window._pair_id = {{ pair.id }};
+            window._user_id = {{ user_id }};
+            window._pair_owner_id = {{ pair_owner }};
+
+
+        </script>
+        <script src="{{ STATIC_URL }}js/pair.js"></script>
+
+    {% endblock %}
+
+    {% block main %}
+        <textarea cols="50" rows="20" id="code_area"></textarea>
+    {% endblock %}
+
+
+    <form>
+{#        <input type="button" id="changeTurn" value="Change Ownership">#}
+        <input type="button" id="leave" value="Leave">
+        {% csrf_token %}
+    </form>
+
+{% endblock %}

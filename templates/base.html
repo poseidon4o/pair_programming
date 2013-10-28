@@ -1,0 +1,24 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{% block title %}title{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+</head>
+
+<body>
+  <div class="page_container">
+    <div class="header_container">
+    	{% block header %}
+        {% endblock %}
+        <div class="logo_container">
+            <img src="{% static "images/logo.png" %}">
+        </div>
+    </div>
+
+    <div class="main_container">
+        {% block content %}{% endblock %}
+    </div>
+  </div>
+</body>
+</html>
