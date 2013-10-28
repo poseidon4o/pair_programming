@@ -47,7 +47,8 @@ $(function() {
 
     var start = function() {
         socket = new io.Socket();
-        socket.connect();
+        socket.connect('http://127.0.0.1:9000')
+
         socket.on('connect', connected);
         socket.on('disconnect', disconnected);
         socket.on('message', messaged);
