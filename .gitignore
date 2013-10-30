@@ -2,3 +2,4 @@
 *.pyc
 *.db
 pp/settings.py
+*.log
