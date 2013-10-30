@@ -14,7 +14,7 @@ class Pair(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('web_site.views.pair', [str(self.id)])
+        return 'web_site.views.pair', [str(self.id)]
 
     def is_user_in(self, user_id):
         for u in self.users.all():
@@ -29,13 +29,7 @@ class Pair(models.Model):
         self.users.add(user)
 
     def get_context(self):
-        return {
-            'name': self.name,
-            'task': self.task,
-            'lang': self.lang,
-            'turn': self.turn.id,
-            'owner': self.owner.id,
-        }
+        return {'pair': self}
 
     def __unicode__(self):
         return self.name

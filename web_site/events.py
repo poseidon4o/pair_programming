@@ -1,35 +1,45 @@
-
-from django.shortcuts import get_object_or_404
 from django_socketio import events
-
-from web_site.models import Pair
+from django.contrib import auth
+import logging
+logger = logging.getLogger(__name__)
 
 
 @events.on_connect
 def connect(request, socket, context):
-    print request
+    if not auth.user_logged_in:
+        logger.debug('User not logged in')
+        return
+    context['conected_users'].append(auth.get_user(request).id)
 
 
-
-@events.on_subscribe
+@events.on_subscribe(channel='^pair-code-')
 def subscribe(request, socket, context, channel):
-    return
+    if not auth.user_logged_in:
+        logger.debug('User not logged in')
+        return
+
+    user = auth.get_user(request)
+    if user.id not in context['connected_users']:
+        logger.debug('User tries subscribe but not connected')
+
+    context[channel]['users'].append(user.id)
+
 
 @events.on_message(channel="^pair-code-")
-def message(request, socket, context, message):
-    """
-    Event handler for pair data channel
-    """
-    print(request)
+def message(request, socket, context, message_obj):
 
+
+    pair = context.get('pair')
+    if pair is None:
+        logger.debug('Pair not in context')
+        return
+
+    if message_obj['pair_id'] != pair.id:
+        logger.debug('Pair id doesnt match')
+        return
+
+    if message['user_id'] not in pair.users.values('id'):
+        logger.debug('User id not in pair')
+        return
 
     socket.broadcast_channel(message=message)
-    return
-    #if 'pair_id' not in message or 'user_id' not in message:
-    #    return
-    #
-    #pair = get_object_or_404(Pair, id=message['pair_id'])
-    #
-    #if pair.l_u_id != int(message['user_id']) and pair.r_u_id != int(message['user_id']):
-    #    return
-

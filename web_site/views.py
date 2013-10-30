@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 def login(request, template="login.html"):
     if request.method == "POST":
         user = auth.authenticate(username=request.POST.get("username"), password=request.POST.get("password"))
-        if user is not None and user.is_active :
+        if user is not None and user.is_active:
             auth.login(request, user)
             request.session["user_id"] = user.id
             return redirect(lobby)
@@ -43,7 +43,7 @@ def register(request, template="register.html"):
 
 @login_required
 def lobby(request, template="lobby.html"):
-    if request.user.is_authenticated() :
+    if request.user.is_authenticated():
         context = {"pairs": Pair.objects.all()}
         return render(request, template, context)
     else:
@@ -58,12 +58,14 @@ def pair(request, pair_id, template="pair.html"):
         return redirect(lobby)
 
     if pair_obj.is_user_in(user_id):
+        request.session['pair_id'] = pair_obj.id
         return render(request, template, pair_obj.get_context())
 
     if not pair_obj.has_free_spot():
         return redirect(lobby)
 
     pair_obj.push_user(request.user)
+    request.session['pair_id'] = pair_obj.id
 
     return render(request, template, pair_obj.get_context())
 
@@ -75,13 +77,14 @@ def create_pair(request):
     task = request.POST.get('task')
 
     if name and lang and task:
-        pair, created = Pair.objects.create(
+        pair_obj = Pair.objects.create(
             name=name,
             lang=lang,
             task=task,
             owner=request.user,
             turn=request.user
-        ), True
-        return redirect(pair)
+        )
+        request.session['created_pair_id'] = pair_obj.id
+        return redirect(pair_obj)
 
     return redirect(lobby)
