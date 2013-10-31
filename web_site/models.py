@@ -28,6 +28,11 @@ class Pair(models.Model):
     def push_user(self, user):
         self.users.add(user)
 
+    def pop_user(self, user):
+        self.users.remove(user)
+        if self.users.count() < 1:
+            self.delete()
+
     def get_context(self):
         return {'pair': self}
 

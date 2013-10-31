@@ -38,7 +38,6 @@ $(function() {
 
             socket.send({
                 code: code,
-                user_id: window._user_id,
                 pair_id: window._pair_id
             });
         }

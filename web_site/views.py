@@ -65,6 +65,7 @@ def pair(request, pair_id, template="pair.html"):
         return redirect(lobby)
 
     pair_obj.push_user(request.user)
+    pair_obj.save()
     request.session['pair_id'] = pair_obj.id
 
     return render(request, template, pair_obj.get_context())
